@@ -25,7 +25,7 @@
               </el-input>
             </el-tab-pane>
           </el-tabs>
-          <el-button type="primary">词法分析</el-button>
+          <el-button type="primary" @click="compile">词法分析</el-button>
         </div>
       </el-card>
     </el-col>
@@ -33,6 +33,7 @@
 </template>
 
 <script>
+  import WorldAnalysis from '@/Util';
     export default {
         name: "worldAnalysis",
       data() {
@@ -41,9 +42,11 @@
             output: ""
           }
       },
+      mounted() {
+      },
       methods: {
           compile() {
-
+            this.output = WorldAnalysis(this.input);
           }
       }
     }
