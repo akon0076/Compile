@@ -28,7 +28,7 @@
           </el-menu-item>
         </el-menu>
       </el-col>
-      <router-view class="child" />
+      <router-view class="child"/>
     </div>
   </div>
 </template>
@@ -59,6 +59,7 @@
     font-size: 20px;
     font-weight: bold;
   }
+
   .complieDiv {
     flex-flow: column;
     display: flex;

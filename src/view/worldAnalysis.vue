@@ -38,7 +38,7 @@
         name: "worldAnalysis",
       data() {
           return {
-            input: "",
+            input: "public 234 insist",
             output: ""
           }
       },
