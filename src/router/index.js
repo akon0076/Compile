@@ -20,7 +20,10 @@ export default new Router({
         {
           path: '/worldAnalysis',
           name: 'worldAnalysis',
-          component: WorldAnalysis
+          component: WorldAnalysis,
+          props: {
+            type: "WorldAnalysis"
+          }
         },
         {
           path: '/FirstChild',

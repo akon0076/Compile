@@ -33,40 +33,62 @@
 </template>
 
 <script>
-  import WorldAnalysis from '@/Util';
-    export default {
-        name: "worldAnalysis",
-      data() {
-          return {
-            input: "public 234 insist",
-            output: ""
+  import Util from '@/Util';
+
+  export default {
+    name: "worldAnalysis",
+    props: {
+      type: ''
+    },
+    data() {
+      return {
+        input: "A->a\nB->b",
+        output: ""
+      }
+    },
+    mounted() {
+    },
+    methods: {
+      compile() {
+        switch (this.type) {
+          case 'worldAnalysis': {
+            this.output = Util.worldAnalysis(this.input);
+            break;
           }
-      },
-      mounted() {
-      },
-      methods: {
-          compile() {
-            this.output = WorldAnalysis(this.input);
+          case 'syntaxAnalysis': {
+            this.output = Util.syntaxAnalysis(this.input);
           }
+        }
+      }
+    },
+    watch:{
+      type: function () {
+        this.input = "";
+        this.output = '';
       }
     }
+  }
 </script>
 
 <style scoped>
   .worldAnalysis-div {
     height: 100%;
   }
+
   .card {
     padding: 10px;
     height: 100%;
   }
+
   .card-height {
     height: 100%;
     display: flex;
   }
+
   .content {
     padding: 10px;
   }
+
   .tab-style {
     margin-bottom: 50px;
   }
@@ -75,9 +97,11 @@
   .worldAnalysis-div .el-card__body {
     width: 100%;
   }
+
   .worldAnalysis-div .el-textarea {
     min-height: 150px;
   }
+
   .worldAnalysis-div .el-textarea__inner {
     min-height: 150px !important;
   }

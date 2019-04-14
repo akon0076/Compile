@@ -14,11 +14,11 @@
           background-color="#545c64"
           text-color="#fff"
           active-text-color="#ffd04b">
-          <el-menu-item index="1" @click="wordAnalysis">
+          <el-menu-item index="1" @click="changeState('wordAnalysis')">
             <i class="el-icon-tickets"></i>
             <span slot="title">词法分析</span>
           </el-menu-item>
-          <el-menu-item index="2">
+          <el-menu-item index="2" @click="changeState('syntaxAnalysis')">
             <i class="el-icon-edit"></i>
             <span slot="title">语法分析</span>
           </el-menu-item>
@@ -28,23 +28,26 @@
           </el-menu-item>
         </el-menu>
       </el-col>
-      <router-view class="child"/>
+      <world-analysis :type="type"></world-analysis>
     </div>
   </div>
 </template>
 
 <script>
+  import WorldAnalysis from "./worldAnalysis";
   export default {
     name: 'Compile',
+    components: {WorldAnalysis},
     data() {
       return {
+        type: 'worldAnalysis',
         activeIndex: '1'
       }
     },
     methods: {
-      wordAnalysis() {
-        this.$router.push({path: 'worldAnalysis'})
-      }
+      changeState(type) {
+        this.type = type;
+      },
     }
   }
 </script>
