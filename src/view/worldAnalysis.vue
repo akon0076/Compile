@@ -1,6 +1,6 @@
 <template>
   <div class="worldAnalysis-div">
-    <el-col :span="21" class="card">
+    <el-col :span="24" class="card">
       <el-card class="card-height">
         <div class="content">
           <el-tabs type="border-card" class="tab-style">
@@ -25,7 +25,7 @@
               </el-input>
             </el-tab-pane>
           </el-tabs>
-          <el-button type="primary" @click="compile">词法分析</el-button>
+          <el-button type="primary" @click="compile">分析字符</el-button>
         </div>
       </el-card>
     </el-col>
@@ -33,12 +33,12 @@
 </template>
 
 <script>
-  import Util from '@/Util';
+
 
   export default {
     name: "worldAnalysis",
     props: {
-      type: ''
+      fun: ''
     },
     data() {
       return {
@@ -50,19 +50,11 @@
     },
     methods: {
       compile() {
-        switch (this.type) {
-          case 'worldAnalysis': {
-            this.output = Util.worldAnalysis(this.input);
-            break;
-          }
-          case 'syntaxAnalysis': {
-            this.output = Util.syntaxAnalysis(this.input);
-          }
-        }
+        this.output = this.fun(this.input);
       }
     },
     watch:{
-      type: function () {
+      fun: function () {
         this.input = "";
         this.output = '';
       }
